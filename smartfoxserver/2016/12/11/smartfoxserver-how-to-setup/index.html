@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Cài đặt và thiết lập môi trường phát triển SmartFoxServer 2X &#8211; ~ thacdu's note</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="life is sharing ~~">
+    <meta name="author" content="thacdu">
+    <meta name="keywords" content="smartfoxserver">
+    <meta property="fb:app_id" content="814529055355940">
+    <link rel="canonical" href="http://localhost:4000/smartfoxserver/2016/12/11/smartfoxserver-how-to-setup/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/pixyll.css" type="text/css">
+
+    <!-- Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Cài đặt và thiết lập môi trường phát triển SmartFoxServer 2X">
+    <meta property="og:description" content="life is sharing ~~">
+    <meta property="og:url" content="http://localhost:4000/smartfoxserver/2016/12/11/smartfoxserver-how-to-setup/">
+    <meta property="og:site_name" content="~ thacdu's note">
+
+    <!-- Icons -->
+    
+</head>
+
+<body class="animated fade-in-down">
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="http://localhost:4000" class="site-title">~ thacdu's note</a>
+      <nav class="site-nav right">
+        
+<a href="/archives/">Bài viết</a>
+<a href="/about/">Giới thiệu</a>
+<a href="/contact/">Liên hệ</a>
+
+
+      </nav>
+      <div class="clearfix"></div>
+      
+        <div class="social-icons">
+  <div class="left">
+    <a class="fa fa-rss" href="/feed.xml"></a>
+    
+      <a class="fa fa-github" href="https://github.com/thacdu"></a>
+    
+    
+    
+      <a class="fa fa-twitter" href="https://twitter.com/thacdu"></a>
+    
+    
+    
+  </div>
+  <div class="right">
+    
+    
+      <a class="fa fa-paypal" href="https://paypal.me/thacdu"></a>
+    
+    
+  </div>
+</div>
+<div class="clearfix"></div>
+
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h3 class="green">Cài đặt và thiết lập môi trường phát triển SmartFoxServer 2X</h3>
+  <span class="post-meta">11 Dec 2016</span>
+</div>
+
+<article class="post-content">
+  <p><strong>SmartFoxServer (SFS)</strong> là nền tảng xây dựng hệ thống <strong>game và ứng dụng multiplayer</strong> sử dụng ngôn ngữ lập trình Java. SFS cung cấp bộ client SDK trên rất nhiều nền tảng khác nhau:  Adobe Flash/Flex/Air, Unity, HTML5, iOS, Windows Phone 8, Android, Java, Windows 8, C++ …</p>
+
+<p>Hiện nay SFS ra mắt phiên bản SFS2X được <strong>goAndPlay()</strong> giới thiệu là có nhiều tính năng nổi trội hơn, hiệu năng mạnh mẽ hơn, tuy nhiên với cá nhân mình thì thứ dễ nhận thấy nhất là việc thêm tham số vào gói tin gửi nhận giữa client và server ở phiên bản mới không gây ảnh hưởng đến các phiên bản cũ của sản phẩm (nghe tưởng chừng đơn giản nhưng lại là vấn đề rất lớn của bất kì ai đã từng maintain một sản phẩm online).</p>
+
+<p><strong>SFS2X cho phép mở rộng</strong> tính năng của server bằng việc viết thêm các <strong>SFS Extension</strong>.</p>
+
+<p><img src="http://localhost:4000/images/sfs-p1/ZoneDiag.png" alt="" /></p>
+
+<p>Kiến trúc của SFS2X bao gồm <strong>các Zone, mỗi Zone lại gồm rất nhiều Room</strong>.
+<strong>Extension của SFS2X</strong> cũng chỉ có hai loại là <strong>RoomExtension và ZoneExtension</strong>.
+Zone luôn phải được tạo ra bằng cách thiết lập trong admin panel (<strong>static</strong>), còn Room thì có thể được tạo sẵn (<strong>static</strong>) từ admin panel hoặc sinh ra dựa vào logic của Zone (<strong>dynamic</strong>).
+Như vậy, Zone ở đây có thể được sử dụng với tư cách như là một game, còn Room là các room trong game đó. SFS2X có thể có rất nhiều Zone, rất phù hợp với việc phát triển một cổng game, bao gồm nhiều game nhỏ bên trong. Ví dụ như các cổng game bài chẳng hạn.</p>
+
+<h3 id="cài-đặt-sfs2x">Cài đặt SFS2X</h3>
+
+<p>Tải và cài đặt SFS2X tại <a href="http://www.smartfoxserver.com/download/sfs2x#p=installer">đây</a>.</p>
+
+<p>Mặc định SFS2X sử dụng JRE cài đặt kèm theo.
+Nếu bạn muốn SFS2X chạy trên phiên bản Java được cài đặt sẵn trên máy thì đơn giản là xóa bỏ folder jre trong thư mục gốc của SFS2X.</p>
+
+<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_1.png" alt="" /></p>
+
+<h3 id="thiết-lập-môi-trường-làm-việc">Thiết lập môi trường làm việc</h3>
+
+<p><em>Mình sử dụng IntelliJ IDEA 2016 Community để làm việc với SFS2X. Các bạn có thể sử dụng bất kì IDE nào các bạn quen thuộc và yêu thích, tuy nhiên thiết lập như thế nào thì mình chịu nhé</em> <img src="http://localhost:4000/images/emo/sweat.gif" alt="" /></p>
+
+<h4 id="tạo-java-project">Tạo Java Project</h4>
+
+<p><em>File -&gt; New -&gt; Project…</em></p>
+
+<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_2.png" alt="" /></p>
+
+<p>Chọn <em>Java -&gt; Next -&gt; Next</em></p>
+
+<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_3.png" alt="" /></p>
+
+<p>Đặt tên cho Project và chọn <strong>Finish</strong>. (Ở đây mình đặt tên là <em>FirstExtension</em>).</p>
+
+<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_4.png" alt="" /></p>
+
+<h4 id="tạo-thư-mục-cho-extension-trong-sfs2x">Tạo thư mục cho extension trong SFS2X</h4>
+
+<p>SFS2X quy định extension phải được đặt trong một thư mục nằm bên trong thư mục <strong><em>extensions</em></strong> của <strong><em>SmartFoxServer2X</em></strong>.
+Ok, vậy tạo thư mục thôi. Ví dụ như của mình là thư mục <strong><em>first</em></strong></p>
+
+<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_6.png" alt="" /></p>
+
+<h4 id="add-thư-viện-cho-project">Add thư viện cho project</h4>
+
+<p><em>File -&gt; Project Struture… -&gt; Global Libraries -&gt; + -&gt; Java</em>
+Đặt tên cho thư viện là <strong>sfs2xlib</strong>.
+Sau đó chọn 2 files <strong><em>sfs2x.jar</em></strong> và <strong><em>sfs2x-core.jar</em></strong> từ folder libs của SFS2X để thêm vào, và cuối cùng sẽ được như sau:</p>
+
+<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_7.png" alt="" /></p>
+
+<h4 id="tạo-artifact-và-build">Tạo Artifact và Build</h4>
+
+<p>Tạo file extension, đặt tên theo định dạng <strong><em>xxxExtension</em></strong>. SFS không bắt buộc chúng ta phải đặt tên như vậy nhưng thứ nhất đó là convention, tuân thủ code convention là điều mà chúng ta nên làm. Thứ 2 đó là việc tìm kiếm file extension trong khi thiết lập SFS Zone hoặc Room sẽ nhanh hơn rất nhiều.</p>
+
+<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_8.png" alt="" /></p>
+
+<p>Trong ví dụ này mình tạo file <strong>FirstZoneExtension.java</strong>, với nội dung:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FirstZoneExtension</span> <span class="kd">extends</span> <span class="n">SFSExtension</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">trace</span><span class="o">(</span><span class="s">"Hello World! This is my first sfs2x extension"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Tiếp theo, chúng ta cần tạo artifact để có thể build project ra jar.
+<em>File -&gt; Project Structure… -&gt; Artifact -&gt; + -&gt; Other</em></p>
+
+<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_9.png" alt="" /></p>
+
+<p>Chọn <em>Create Archive</em></p>
+
+<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_10.png" alt="" /></p>
+
+<p>Chọn <em>Create Manifest…</em> và thiết lập như bên dưới</p>
+
+<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_11.png" alt="" /></p>
+
+<p>Chuột phải vào <strong>‘FirstExtension’ compile output</strong>, chọn <strong>Pack Into /FirstExtension.jar</strong></p>
+
+<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_12.png" alt="" /></p>
+
+<p>Ở <strong>Output directory</strong>, chúng ta chỉ đến đường dẫn của thư mục <strong>first</strong> đã được tạo bên trên.
+Cuối cùng, chúng ta có được kết quả như sau. Và chọn <strong>OK</strong> để hoàn tất.</p>
+
+<p>Chọn <em>Build -&gt; Build Artifacts…</em></p>
+
+<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_13.png" alt="" /></p>
+
+<p><em>Build</em></p>
+
+<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_14.png" alt="" /></p>
+
+<p>Sau khi build xong chúng ta có được file <strong>FirstExtension.jar</strong> trong thư mục <strong>first</strong>.</p>
+
+<h4 id="thiết-lập-extension-cho-sfs2x">Thiết lập extension cho SFS2X</h4>
+
+<p>Khởi động SFS2X server và truy cập vào địa chỉ <a href="http://localhost:8080/admin">http://localhost:8080/admin</a> để thiết lập Zone. Bên trong <strong>Zone Configurator</strong> tạo một Zone mới với <strong>FirstZoneExtension</strong> mà chúng ta vừa tạo.
+Save lại và khởi động lại server để Zone mới được load.</p>
+
+<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_15.png" alt="" /></p>
+
+<h4 id="tích-hợp-vào-intellj">Tích hợp vào IntellJ</h4>
+
+<p>Cho đến hiện tại thì các bạn đã hoàn toàn có thể bắt đầu viết SFS2X Extension cho mình được rồi.
+Tuy nhiên, trong quá trình phát triển chúng ta cần sử dụng các công cụ debug của IDE để tìm lỗi.
+Do đó, ở bước này chúng ta sẽ tích hợp để SFS2X khởi chạy bên trong IntelliJ.</p>
+
+<p>Sửa lại <strong>sfs2xlib</strong> như sau</p>
+
+<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_16.png" alt="" /></p>
+
+<p>Chọn <em>Run -&gt; Edit Configurations…</em></p>
+
+<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_17.png" alt="" /></p>
+
+<p>Chọn dấu <em>+ -&gt; Application</em></p>
+
+<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_18.png" alt="" /></p>
+
+<p>Thiết lập như bên dưới</p>
+
+<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_19.png" alt="" /></p>
+
+<p>Ở mục <em>Before launch</em> thêm <em>Build Artifacts</em></p>
+
+<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_20.png" alt="" /></p>
+
+<p>Sau đó chọn <em>FirstExtension</em></p>
+
+<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_21.png" alt="" /></p>
+
+<p>Ấn <strong>OK</strong> để lưu lại và <strong>Run</strong> thử project sau khi hoàn tất.</p>
+
+<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_22.png" alt="" /></p>
+
+</article>
+
+
+
+
+
+<div class="fb-like" data-share="true" data-width="760" data-show-faces="true"></div>
+
+<div class="fb-comments" data-href="http://localhost:4000/smartfoxserver/2016/12/11/smartfoxserver-how-to-setup/" data-width="760" data-numposts="10"></div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=814529055355940";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+  <h4 class="related-post-title">Bài viết liên quan</h4>
+  
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+  <div class="p2 wrap">
+    <div class="measure mt1 center">
+      <small>
+        Sharing with &lt;3 by <a href="http://localhost:4000">thacdu</a>
+      </small>
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>

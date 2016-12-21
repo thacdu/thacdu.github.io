@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>~ thacdu's note</title>
+    <description>life is sharing ~~</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Cài đặt và thiết lập môi trường phát triển SmartFoxServer 2X</title>
+        <description>&lt;p&gt;&lt;strong&gt;SmartFoxServer (SFS)&lt;/strong&gt; là nền tảng xây dựng hệ thống &lt;strong&gt;game và ứng dụng multiplayer&lt;/strong&gt; sử dụng ngôn ngữ lập trình Java. SFS cung cấp bộ client SDK trên rất nhiều nền tảng khác nhau:  Adobe Flash/Flex/Air, Unity, HTML5, iOS, Windows Phone 8, Android, Java, Windows 8, C++ …&lt;/p&gt;
+
+&lt;p&gt;Hiện nay SFS ra mắt phiên bản SFS2X được &lt;strong&gt;goAndPlay()&lt;/strong&gt; giới thiệu là có nhiều tính năng nổi trội hơn, hiệu năng mạnh mẽ hơn, tuy nhiên với cá nhân mình thì thứ dễ nhận thấy nhất là việc thêm tham số vào gói tin gửi nhận giữa client và server ở phiên bản mới không gây ảnh hưởng đến các phiên bản cũ của sản phẩm (nghe tưởng chừng đơn giản nhưng lại là vấn đề rất lớn của bất kì ai đã từng maintain một sản phẩm online).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;SFS2X cho phép mở rộng&lt;/strong&gt; tính năng của server bằng việc viết thêm các &lt;strong&gt;SFS Extension&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/sfs-p1/ZoneDiag.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Kiến trúc của SFS2X bao gồm &lt;strong&gt;các Zone, mỗi Zone lại gồm rất nhiều Room&lt;/strong&gt;.
+&lt;strong&gt;Extension của SFS2X&lt;/strong&gt; cũng chỉ có hai loại là &lt;strong&gt;RoomExtension và ZoneExtension&lt;/strong&gt;.
+Zone luôn phải được tạo ra bằng cách thiết lập trong admin panel (&lt;strong&gt;static&lt;/strong&gt;), còn Room thì có thể được tạo sẵn (&lt;strong&gt;static&lt;/strong&gt;) từ admin panel hoặc sinh ra dựa vào logic của Zone (&lt;strong&gt;dynamic&lt;/strong&gt;).
+Như vậy, Zone ở đây có thể được sử dụng với tư cách như là một game, còn Room là các room trong game đó. SFS2X có thể có rất nhiều Zone, rất phù hợp với việc phát triển một cổng game, bao gồm nhiều game nhỏ bên trong. Ví dụ như các cổng game bài chẳng hạn.&lt;/p&gt;
+
+&lt;h3 id=&quot;cài-đặt-sfs2x&quot;&gt;Cài đặt SFS2X&lt;/h3&gt;
+
+&lt;p&gt;Tải và cài đặt SFS2X tại &lt;a href=&quot;http://www.smartfoxserver.com/download/sfs2x#p=installer&quot;&gt;đây&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Mặc định SFS2X sử dụng JRE cài đặt kèm theo.
+Nếu bạn muốn SFS2X chạy trên phiên bản Java được cài đặt sẵn trên máy thì đơn giản là xóa bỏ folder jre trong thư mục gốc của SFS2X.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/sfs-p1/Screenshot_1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;thiết-lập-môi-trường-làm-việc&quot;&gt;Thiết lập môi trường làm việc&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;Mình sử dụng IntelliJ IDEA 2016 Community để làm việc với SFS2X. Các bạn có thể sử dụng bất kì IDE nào các bạn quen thuộc và yêu thích, tuy nhiên thiết lập như thế nào thì mình chịu nhé&lt;/em&gt; &lt;img src=&quot;http://localhost:4000/images/emo/sweat.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;tạo-java-project&quot;&gt;Tạo Java Project&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;File -&amp;gt; New -&amp;gt; Project…&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/sfs-p1/Screenshot_2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Chọn &lt;em&gt;Java -&amp;gt; Next -&amp;gt; Next&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/sfs-p1/Screenshot_3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Đặt tên cho Project và chọn &lt;strong&gt;Finish&lt;/strong&gt;. (Ở đây mình đặt tên là &lt;em&gt;FirstExtension&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/sfs-p1/Screenshot_4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;tạo-thư-mục-cho-extension-trong-sfs2x&quot;&gt;Tạo thư mục cho extension trong SFS2X&lt;/h4&gt;
+
+&lt;p&gt;SFS2X quy định extension phải được đặt trong một thư mục nằm bên trong thư mục &lt;strong&gt;&lt;em&gt;extensions&lt;/em&gt;&lt;/strong&gt; của &lt;strong&gt;&lt;em&gt;SmartFoxServer2X&lt;/em&gt;&lt;/strong&gt;.
+Ok, vậy tạo thư mục thôi. Ví dụ như của mình là thư mục &lt;strong&gt;&lt;em&gt;first&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/sfs-p1/Screenshot_6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;add-thư-viện-cho-project&quot;&gt;Add thư viện cho project&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;File -&amp;gt; Project Struture… -&amp;gt; Global Libraries -&amp;gt; + -&amp;gt; Java&lt;/em&gt;
+Đặt tên cho thư viện là &lt;strong&gt;sfs2xlib&lt;/strong&gt;.
+Sau đó chọn 2 files &lt;strong&gt;&lt;em&gt;sfs2x.jar&lt;/em&gt;&lt;/strong&gt; và &lt;strong&gt;&lt;em&gt;sfs2x-core.jar&lt;/em&gt;&lt;/strong&gt; từ folder libs của SFS2X để thêm vào, và cuối cùng sẽ được như sau:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/sfs-p1/Screenshot_7.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;tạo-artifact-và-build&quot;&gt;Tạo Artifact và Build&lt;/h4&gt;
+
+&lt;p&gt;Tạo file extension, đặt tên theo định dạng &lt;strong&gt;&lt;em&gt;xxxExtension&lt;/em&gt;&lt;/strong&gt;. SFS không bắt buộc chúng ta phải đặt tên như vậy nhưng thứ nhất đó là convention, tuân thủ code convention là điều mà chúng ta nên làm. Thứ 2 đó là việc tìm kiếm file extension trong khi thiết lập SFS Zone hoặc Room sẽ nhanh hơn rất nhiều.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/sfs-p1/Screenshot_8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Trong ví dụ này mình tạo file &lt;strong&gt;FirstZoneExtension.java&lt;/strong&gt;, với nội dung:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;FirstZoneExtension&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SFSExtension&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;trace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello World! This is my first sfs2x extension&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Tiếp theo, chúng ta cần tạo artifact để có thể build project ra jar.
+&lt;em&gt;File -&amp;gt; Project Structure… -&amp;gt; Artifact -&amp;gt; + -&amp;gt; Other&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/sfs-p1/Screenshot_9.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Chọn &lt;em&gt;Create Archive&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/sfs-p1/Screenshot_10.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Chọn &lt;em&gt;Create Manifest…&lt;/em&gt; và thiết lập như bên dưới&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/sfs-p1/Screenshot_11.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Chuột phải vào &lt;strong&gt;‘FirstExtension’ compile output&lt;/strong&gt;, chọn &lt;strong&gt;Pack Into /FirstExtension.jar&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/sfs-p1/Screenshot_12.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ở &lt;strong&gt;Output directory&lt;/strong&gt;, chúng ta chỉ đến đường dẫn của thư mục &lt;strong&gt;first&lt;/strong&gt; đã được tạo bên trên.
+Cuối cùng, chúng ta có được kết quả như sau. Và chọn &lt;strong&gt;OK&lt;/strong&gt; để hoàn tất.&lt;/p&gt;
+
+&lt;p&gt;Chọn &lt;em&gt;Build -&amp;gt; Build Artifacts…&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/sfs-p1/Screenshot_13.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Build&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/sfs-p1/Screenshot_14.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sau khi build xong chúng ta có được file &lt;strong&gt;FirstExtension.jar&lt;/strong&gt; trong thư mục &lt;strong&gt;first&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;thiết-lập-extension-cho-sfs2x&quot;&gt;Thiết lập extension cho SFS2X&lt;/h4&gt;
+
+&lt;p&gt;Khởi động SFS2X server và truy cập vào địa chỉ &lt;a href=&quot;http://localhost:8080/admin&quot;&gt;http://localhost:8080/admin&lt;/a&gt; để thiết lập Zone. Bên trong &lt;strong&gt;Zone Configurator&lt;/strong&gt; tạo một Zone mới với &lt;strong&gt;FirstZoneExtension&lt;/strong&gt; mà chúng ta vừa tạo.
+Save lại và khởi động lại server để Zone mới được load.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/sfs-p1/Screenshot_15.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;tích-hợp-vào-intellj&quot;&gt;Tích hợp vào IntellJ&lt;/h4&gt;
+
+&lt;p&gt;Cho đến hiện tại thì các bạn đã hoàn toàn có thể bắt đầu viết SFS2X Extension cho mình được rồi.
+Tuy nhiên, trong quá trình phát triển chúng ta cần sử dụng các công cụ debug của IDE để tìm lỗi.
+Do đó, ở bước này chúng ta sẽ tích hợp để SFS2X khởi chạy bên trong IntelliJ.&lt;/p&gt;
+
+&lt;p&gt;Sửa lại &lt;strong&gt;sfs2xlib&lt;/strong&gt; như sau&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/sfs-p1/Screenshot_16.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Chọn &lt;em&gt;Run -&amp;gt; Edit Configurations…&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/sfs-p1/Screenshot_17.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Chọn dấu &lt;em&gt;+ -&amp;gt; Application&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/sfs-p1/Screenshot_18.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Thiết lập như bên dưới&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/sfs-p1/Screenshot_19.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ở mục &lt;em&gt;Before launch&lt;/em&gt; thêm &lt;em&gt;Build Artifacts&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/sfs-p1/Screenshot_20.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sau đó chọn &lt;em&gt;FirstExtension&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/sfs-p1/Screenshot_21.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ấn &lt;strong&gt;OK&lt;/strong&gt; để lưu lại và &lt;strong&gt;Run&lt;/strong&gt; thử project sau khi hoàn tất.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/sfs-p1/Screenshot_22.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 11 Dec 2016 03:15:21 +0700</pubDate>
+        <link>http://localhost:4000/smartfoxserver/2016/12/11/smartfoxserver-how-to-setup/</link>
+        <guid isPermaLink="true">http://localhost:4000/smartfoxserver/2016/12/11/smartfoxserver-how-to-setup/</guid>
+      </item>
+    
+  </channel>
+</rss>

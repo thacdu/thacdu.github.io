@@ -9,7 +9,7 @@
     <meta name="author" content="thacdu">
     <meta name="keywords" content="smartfoxserver">
     <meta property="fb:app_id" content="814529055355940">
-    <link rel="canonical" href="http://localhost:4000/smartfoxserver/2016/12/11/smartfoxserver-how-to-setup/">
+    <link rel="canonical" href="http://thacdu.com/smartfoxserver/2016/12/11/smartfoxserver-how-to-setup/">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/pixyll.css" type="text/css">
@@ -27,7 +27,7 @@
     <meta property="og:type" content="article">
     <meta property="og:title" content="Cài đặt và thiết lập môi trường phát triển SmartFoxServer 2X">
     <meta property="og:description" content="life is sharing ~~">
-    <meta property="og:url" content="http://localhost:4000/smartfoxserver/2016/12/11/smartfoxserver-how-to-setup/">
+    <meta property="og:url" content="http://thacdu.com/smartfoxserver/2016/12/11/smartfoxserver-how-to-setup/">
     <meta property="og:site_name" content="~ thacdu's note">
 
     <!-- Icons -->
@@ -39,7 +39,7 @@
     <header class="site-header px2 px-responsive">
   <div class="mt2 wrap">
     <div class="measure">
-      <a href="http://localhost:4000" class="site-title">~ thacdu's note</a>
+      <a href="http://thacdu.com" class="site-title">~ thacdu's note</a>
       <nav class="site-nav right">
         
 <a href="/archives/">Bài viết</a>
@@ -65,8 +65,6 @@
   </div>
   <div class="right">
     
-    
-      <a class="fa fa-paypal" href="https://paypal.me/thacdu"></a>
     
     
   </div>
@@ -96,7 +94,7 @@
 
 <p><strong>SFS2X cho phép mở rộng</strong> tính năng của server bằng việc viết thêm các <strong>SFS Extension</strong>.</p>
 
-<p><img src="http://localhost:4000/images/sfs-p1/ZoneDiag.png" alt="" /></p>
+<p><img src="http://thacdu.com/images/sfs-p1/ZoneDiag.png" alt="" /></p>
 
 <p>Kiến trúc của SFS2X bao gồm <strong>các Zone, mỗi Zone lại gồm rất nhiều Room</strong>.
 <strong>Extension của SFS2X</strong> cũng chỉ có hai loại là <strong>RoomExtension và ZoneExtension</strong>.
@@ -110,32 +108,32 @@ Như vậy, Zone ở đây có thể được sử dụng với tư cách như l
 <p>Mặc định SFS2X sử dụng JRE cài đặt kèm theo.
 Nếu bạn muốn SFS2X chạy trên phiên bản Java được cài đặt sẵn trên máy thì đơn giản là xóa bỏ folder jre trong thư mục gốc của SFS2X.</p>
 
-<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_1.png" alt="" /></p>
+<p><img src="http://thacdu.com/images/sfs-p1/Screenshot_1.png" alt="" /></p>
 
 <h3 id="thiết-lập-môi-trường-làm-việc">Thiết lập môi trường làm việc</h3>
 
-<p><em>Mình sử dụng IntelliJ IDEA 2016 Community để làm việc với SFS2X. Các bạn có thể sử dụng bất kì IDE nào các bạn quen thuộc và yêu thích, tuy nhiên thiết lập như thế nào thì mình chịu nhé</em> <img src="http://localhost:4000/images/emo/sweat.gif" alt="" /></p>
+<p><em>Mình sử dụng IntelliJ IDEA 2016 Community để làm việc với SFS2X. Các bạn có thể sử dụng bất kì IDE nào các bạn quen thuộc và yêu thích, tuy nhiên thiết lập như thế nào thì mình chịu nhé</em> <img src="http://thacdu.com/images/emo/sweat.gif" alt="" /></p>
 
 <h4 id="tạo-java-project">Tạo Java Project</h4>
 
 <p><em>File -&gt; New -&gt; Project…</em></p>
 
-<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_2.png" alt="" /></p>
+<p><img src="http://thacdu.com/images/sfs-p1/Screenshot_2.png" alt="" /></p>
 
 <p>Chọn <em>Java -&gt; Next -&gt; Next</em></p>
 
-<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_3.png" alt="" /></p>
+<p><img src="http://thacdu.com/images/sfs-p1/Screenshot_3.png" alt="" /></p>
 
 <p>Đặt tên cho Project và chọn <strong>Finish</strong>. (Ở đây mình đặt tên là <em>FirstExtension</em>).</p>
 
-<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_4.png" alt="" /></p>
+<p><img src="http://thacdu.com/images/sfs-p1/Screenshot_4.png" alt="" /></p>
 
 <h4 id="tạo-thư-mục-cho-extension-trong-sfs2x">Tạo thư mục cho extension trong SFS2X</h4>
 
 <p>SFS2X quy định extension phải được đặt trong một thư mục nằm bên trong thư mục <strong><em>extensions</em></strong> của <strong><em>SmartFoxServer2X</em></strong>.
 Ok, vậy tạo thư mục thôi. Ví dụ như của mình là thư mục <strong><em>first</em></strong></p>
 
-<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_6.png" alt="" /></p>
+<p><img src="http://thacdu.com/images/sfs-p1/Screenshot_6.png" alt="" /></p>
 
 <h4 id="add-thư-viện-cho-project">Add thư viện cho project</h4>
 
@@ -143,13 +141,13 @@ Ok, vậy tạo thư mục thôi. Ví dụ như của mình là thư mục <stro
 Đặt tên cho thư viện là <strong>sfs2xlib</strong>.
 Sau đó chọn 2 files <strong><em>sfs2x.jar</em></strong> và <strong><em>sfs2x-core.jar</em></strong> từ folder libs của SFS2X để thêm vào, và cuối cùng sẽ được như sau:</p>
 
-<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_7.png" alt="" /></p>
+<p><img src="http://thacdu.com/images/sfs-p1/Screenshot_7.png" alt="" /></p>
 
 <h4 id="tạo-artifact-và-build">Tạo Artifact và Build</h4>
 
 <p>Tạo file extension, đặt tên theo định dạng <strong><em>xxxExtension</em></strong>. SFS không bắt buộc chúng ta phải đặt tên như vậy nhưng thứ nhất đó là convention, tuân thủ code convention là điều mà chúng ta nên làm. Thứ 2 đó là việc tìm kiếm file extension trong khi thiết lập SFS Zone hoặc Room sẽ nhanh hơn rất nhiều.</p>
 
-<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_8.png" alt="" /></p>
+<p><img src="http://thacdu.com/images/sfs-p1/Screenshot_8.png" alt="" /></p>
 
 <p>Trong ví dụ này mình tạo file <strong>FirstZoneExtension.java</strong>, với nội dung:</p>
 
@@ -163,30 +161,30 @@ Sau đó chọn 2 files <strong><em>sfs2x.jar</em></strong> và <strong><em>sfs2
 <p>Tiếp theo, chúng ta cần tạo artifact để có thể build project ra jar.
 <em>File -&gt; Project Structure… -&gt; Artifact -&gt; + -&gt; Other</em></p>
 
-<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_9.png" alt="" /></p>
+<p><img src="http://thacdu.com/images/sfs-p1/Screenshot_9.png" alt="" /></p>
 
 <p>Chọn <em>Create Archive</em></p>
 
-<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_10.png" alt="" /></p>
+<p><img src="http://thacdu.com/images/sfs-p1/Screenshot_10.png" alt="" /></p>
 
 <p>Chọn <em>Create Manifest…</em> và thiết lập như bên dưới</p>
 
-<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_11.png" alt="" /></p>
+<p><img src="http://thacdu.com/images/sfs-p1/Screenshot_11.png" alt="" /></p>
 
 <p>Chuột phải vào <strong>‘FirstExtension’ compile output</strong>, chọn <strong>Pack Into /FirstExtension.jar</strong></p>
 
-<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_12.png" alt="" /></p>
+<p><img src="http://thacdu.com/images/sfs-p1/Screenshot_12.png" alt="" /></p>
 
 <p>Ở <strong>Output directory</strong>, chúng ta chỉ đến đường dẫn của thư mục <strong>first</strong> đã được tạo bên trên.
 Cuối cùng, chúng ta có được kết quả như sau. Và chọn <strong>OK</strong> để hoàn tất.</p>
 
 <p>Chọn <em>Build -&gt; Build Artifacts…</em></p>
 
-<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_13.png" alt="" /></p>
+<p><img src="http://thacdu.com/images/sfs-p1/Screenshot_13.png" alt="" /></p>
 
 <p><em>Build</em></p>
 
-<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_14.png" alt="" /></p>
+<p><img src="http://thacdu.com/images/sfs-p1/Screenshot_14.png" alt="" /></p>
 
 <p>Sau khi build xong chúng ta có được file <strong>FirstExtension.jar</strong> trong thư mục <strong>first</strong>.</p>
 
@@ -195,7 +193,7 @@ Cuối cùng, chúng ta có được kết quả như sau. Và chọn <strong>OK
 <p>Khởi động SFS2X server và truy cập vào địa chỉ <a href="http://localhost:8080/admin">http://localhost:8080/admin</a> để thiết lập Zone. Bên trong <strong>Zone Configurator</strong> tạo một Zone mới với <strong>FirstZoneExtension</strong> mà chúng ta vừa tạo.
 Save lại và khởi động lại server để Zone mới được load.</p>
 
-<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_15.png" alt="" /></p>
+<p><img src="http://thacdu.com/images/sfs-p1/Screenshot_15.png" alt="" /></p>
 
 <h4 id="tích-hợp-vào-intellj">Tích hợp vào IntellJ</h4>
 
@@ -205,31 +203,31 @@ Do đó, ở bước này chúng ta sẽ tích hợp để SFS2X khởi chạy b
 
 <p>Sửa lại <strong>sfs2xlib</strong> như sau</p>
 
-<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_16.png" alt="" /></p>
+<p><img src="http://thacdu.com/images/sfs-p1/Screenshot_16.png" alt="" /></p>
 
 <p>Chọn <em>Run -&gt; Edit Configurations…</em></p>
 
-<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_17.png" alt="" /></p>
+<p><img src="http://thacdu.com/images/sfs-p1/Screenshot_17.png" alt="" /></p>
 
 <p>Chọn dấu <em>+ -&gt; Application</em></p>
 
-<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_18.png" alt="" /></p>
+<p><img src="http://thacdu.com/images/sfs-p1/Screenshot_18.png" alt="" /></p>
 
 <p>Thiết lập như bên dưới</p>
 
-<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_19.png" alt="" /></p>
+<p><img src="http://thacdu.com/images/sfs-p1/Screenshot_19.png" alt="" /></p>
 
 <p>Ở mục <em>Before launch</em> thêm <em>Build Artifacts</em></p>
 
-<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_20.png" alt="" /></p>
+<p><img src="http://thacdu.com/images/sfs-p1/Screenshot_20.png" alt="" /></p>
 
 <p>Sau đó chọn <em>FirstExtension</em></p>
 
-<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_21.png" alt="" /></p>
+<p><img src="http://thacdu.com/images/sfs-p1/Screenshot_21.png" alt="" /></p>
 
 <p>Ấn <strong>OK</strong> để lưu lại và <strong>Run</strong> thử project sau khi hoàn tất.</p>
 
-<p><img src="http://localhost:4000/images/sfs-p1/Screenshot_22.png" alt="" /></p>
+<p><img src="http://thacdu.com/images/sfs-p1/Screenshot_22.png" alt="" /></p>
 
 </article>
 
@@ -239,7 +237,7 @@ Do đó, ở bước này chúng ta sẽ tích hợp để SFS2X khởi chạy b
 
 <div class="fb-like" data-share="true" data-width="760" data-show-faces="true"></div>
 
-<div class="fb-comments" data-href="http://localhost:4000/smartfoxserver/2016/12/11/smartfoxserver-how-to-setup/" data-width="760" data-numposts="10"></div>
+<div class="fb-comments" data-href="http://thacdu.com/smartfoxserver/2016/12/11/smartfoxserver-how-to-setup/" data-width="760" data-numposts="10"></div>
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -262,7 +260,7 @@ Do đó, ở bước này chúng ta sẽ tích hợp để SFS2X khởi chạy b
   <div class="p2 wrap">
     <div class="measure mt1 center">
       <small>
-        Sharing with &lt;3 by <a href="http://localhost:4000">thacdu</a>
+        Sharing with &lt;3 by <a href="http://thacdu.com">thacdu</a>
       </small>
     </div>
   </div>
